@@ -22,34 +22,32 @@ menuButtonContainer.addEventListener('click', () => {
 let timeoutId; // Declare a variable to store the timeout ID
 
 document.body.addEventListener('click', function (event) {
-    const loadingContainer = document.getElementById('loadingContainer');
-    const loadingDot1 = document.querySelector('.loading-dot1');
-    const loadingDot2 = document.querySelector('.loading-dot2');
+  const loadingContainer = document.getElementById('loadingContainer');
+  const loadingDot1 = document.querySelector('.loading-dot1');
+  const loadingDot2 = document.querySelector('.loading-dot2');
 
-    // Clear any existing timeout to prevent premature hiding
-    if (timeoutId) {
-        clearTimeout(timeoutId);
-        loadingDot1.style.animation = 'none';
-        loadingDot2.style.animation = 'none'; 
-        loadingContainer.offsetWidth; // Trigger a reflow to reset the animation
-    }
+  // Clear any existing timeout to prevent premature hiding
+  if (timeoutId) {
+    clearTimeout(timeoutId);
+    loadingDot1.style.animation = 'none';
+    loadingDot2.style.animation = 'none';
+    loadingContainer.offsetWidth; // Trigger a reflow to reset the animation
+  }
 
-    // Reset the animation
+  // Reset the animation
 
-    loadingDot1.style.animation = ''; 
-    loadingDot2.style.animation = ''; 
+  loadingDot1.style.animation = '';
+  loadingDot2.style.animation = '';
 
-    loadingContainer.style.left = `${event.clientX - 10}px`; // Center the container
-    loadingContainer.style.top = `${event.clientY - 10}px`; // Center the container
-    loadingContainer.style.display = 'block';
+  loadingContainer.style.left = `${event.clientX - 25}px`; // Center the container
+  loadingContainer.style.top = `${event.clientY - 25}px`; // Center the container
+  loadingContainer.style.display = 'block';
 
-    // Set a new timeout to hide the animation after 6 seconds
-    timeoutId = setTimeout(() => {
-        loadingContainer.style.display = 'none'; // Hide the animation after 6 seconds
-    }, 1000); // Match the animation duration
+  // Set a new timeout to hide the animation after 6 seconds
+  timeoutId = setTimeout(() => {
+    loadingContainer.style.display = 'none'; // Hide the animation after 6 seconds
+  }, 1000); // Match the animation duration
 });
-
-
 
 // FOR TYPE WRITER BOTTOM LINE
 document.addEventListener('DOMContentLoaded', function () {

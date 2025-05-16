@@ -1,48 +1,26 @@
 .loading-container {
     position: fixed;
-    /* Change to absolute for positioning */
     width: 100px;
     height: 100px;
     display: none;
-    /* Initially hidden */
     z-index: 999999;
+    pointer-events: none;
 }
-
-/* .loading-dot {
-    position: absolute;
-    border-radius: 50%;
-    animation: popUpFadeOut 6s infinite ease-out;
-    width: 20px;
-    height: 20px;
-}
-
-.loading-dot:nth-child(2) {
-    animation-delay: 1.2s;
-}
-.loading-dot:nth-child(3) {
-    animation-delay: 2.4s;
-}
-.loading-dot:nth-child(4) {
-    animation-delay: 3.6s;
-}
-.loading-dot:nth-child(5) {
-    animation-delay: 4.8s;
-} */
 
 .loading-dot1 {
     position: absolute;
     border-radius: 50%;
     animation: popUpFadeOut1 1s infinite ease-out;
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 50px;
 }
 
 .loading-dot2 {
     position: absolute;
     border-radius: 50%;
     animation: popUpFadeOut2 1s infinite ease-out;
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 50px;
 }
 
 .loading-dot:nth-child(2) {
