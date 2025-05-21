@@ -11,13 +11,16 @@
         href="https://fonts.googleapis.com/css2?family=Handjet:wght,ELGR,ELSH@100..900,1..2,0..16&Cinzel:wght@400..900&family=Playwrite+DE+Grund:wght@100..400&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Protest+Guerrilla&display=swap"
         rel="stylesheet">
 
-    <title>This is a portfolio webpage for Web Developer</title>
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="clickAnimation.css">
     <link rel="stylesheet" href="starAnimation.css">
     <link rel="stylesheet" href="bubble.css">
 
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.0/lottie.min.js"></script> -->
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+
+    <title>This is a portfolio webpage for Web Developer</title>
 
 </head>
 
@@ -31,7 +34,6 @@
         <div class="loading-dot loading-dot1"></div>
         <div class="loading-dot loading-dot2"></div>
     </div>
-    <div class="box"></div>
     <div class="headerContainer">
         <header>
             <div class="manuAndNavContainer">
@@ -69,7 +71,7 @@
                         your <strong><mark>Brand and Business...</mark></strong></p>
                 </div>
                 <div class="imgAndBottomLine">
-                    <img src="image/me-transparent3.png" alt="">
+                    <img src="assets/image/me-transparent3.png" alt="">
 
                     <!-- <div id="lottie-container" style="width: 500px; height: 500px;"></div> -->
                     <div class="bottomLine"></div>
@@ -84,13 +86,20 @@
         <div class="mainAndFooter">
             <div class="mainBoxContainer">
                 <main class="mainBox">
-                    <div class="mainVideoPair professional">Professional
-                        <img src="image/professional.gif" alt="">
+                    <div class="mainVideoPair professional">User Friendly Interface
+                        <dotlottie-player
+                            src="https://lottie.host/388225b6-6dba-4ee3-b2ff-4b6de8ad85f6/Bw0KaTqHTe.lottie"
+                            background="transparent" speed="1" loop autoplay></dotlottie-player>
                     </div>
-                    <div class="mainVideoPair upToDateDesign">Up to date Design <img src="image/design.gif" alt="">
+                    <div class="mainVideoPair upToDateDesign">Modern Look <dotlottie-player
+                            src="https://lottie.host/de5c59e3-f081-4954-b214-f7b22453bf2d/hh3zk8Y16h.lottie"
+                            background="transparent" speed="1" loop autoplay></dotlottie-player>
                     </div>
-                    <div class="mainVideoPair responsiveAndSecure">Responsive & Secure<img src="image/responsive.gif"
-                            alt="">
+                    <div class="mainVideoPair responsiveAndSecure">Responsive & Secure
+                        <dotlottie-player
+                            src="https://lottie.host/b260e440-98bd-4d47-bcd1-cba0868c139d/RR0p8e666q.lottie"
+                            background="transparent" speed="1" loop autoplay></dotlottie-player>
+                        <!-- <div class="lottie lottie-responsive"></div> -->
                     </div>
                 </main>
             </div>
@@ -126,6 +135,20 @@
             </footer>
         </div>
     </div>
+
+    <!-- <script>
+        var animation = lottie.loadAnimation({
+            container: document.querySelector('.responsiveAndSecure'), // required
+            renderer: 'svg', // 'canvas' or 'html' also available
+            loop: true,
+            autoplay: true,
+            path: 'https://lottie.host/531feb19-d260-4573-9ade-2e288e9de166/KF1QBWa3Qe.json' // ✅ local or hosted .json file
+        });
+    </script> -->
+
+
+
+
 
 
 

@@ -16,20 +16,8 @@ body {
     background-size: 150%;
     position: relative;
     animation: color 20s ease-in-out infinite;
-    background-color: #000000;
 }
 
-
-.box {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-
-    background: linear-gradient(to bottom, #00000000, #00000041, #000000, #242424);
-    background-size: 150%;
-    animation: color 20s ease-in-out infinite;
-    background-color: #00000000;
-}
 
 .headerContainer {
     height: 100%;
@@ -322,6 +310,7 @@ header {
     letter-spacing: 10px;
     word-spacing: 10px;
     opacity: 0.8;
+    filter: drop-shadow(0px 15px 5px rgb(0, 0, 0));
 }
 
 .headLineImgPair p {
@@ -359,7 +348,6 @@ p strong {
     align-items: center;
     width: 100%;
     z-index: 2;
-
 }
 
 
@@ -539,9 +527,6 @@ p strong {
     }
 }
 
-
-
-
 footer {
     z-index: 1;
     position: relative;
@@ -575,6 +560,11 @@ footer p {
     font-weight: bold;
     justify-content: center;
     display: flex;
+    filter: drop-shadow(0px 15px 10px rgb(0, 0, 0));
+}
+
+.mainBox dotlottie-player {
+        filter: drop-shadow(30px 30px 5px black);
 }
 
 
@@ -643,17 +633,17 @@ footer p {
 .marketPlace h3,
 .socialMedia h3,
 .contact h3 {
-    box-shadow: 0 0 15px 1px rgb(0 179 255 / 41%);
+    box-shadow: 0 0 15px 1px rgb(0 179 255 / 41%), inset 0 -5px 10px;
     border-radius: 20px;
     letter-spacing: 2px;
     font-size: 15px;
-    border: 10px solid transparent;
     transition: 400ms ease-in-out;
     width: fit-content;
     height: fit-content;
-    background-color: rgb(46 193 255);
+    background-color: #00e9e9;
     color: #000000e8;
-    font-weight: 100;
+    font-weight: 600;
+    padding: 10px;
 }
 
 .contactElement {
@@ -661,33 +651,31 @@ footer p {
 }
 
 .contactElement p {
-    box-shadow: 0 0 5px 2px rgba(255, 255, 255, 0.226);
-    background-color: #000000;
-    border: 8px solid transparent;
-    border-radius: 20px;
+    box-shadow: 0 -5px 10px inset;
+    background-color: #9dff00;
+    border-radius: 15px;
     transition: 400ms ease-in-out;
     font-size: 12px;
     width: fit-content;
     height: fit-content;
     margin: 10px 0 0 0;
-    color: rgba(255, 255, 255, 0.774);
+    color: rgb(0 0 0);
     font-family: "Roboto Mono", monospace;
-    font-weight: 300;
+    padding: 10px;
+    font-weight: 400;
 }
 
 .contactElement p>a {
-    color: rgba(255, 255, 255, 0.774);
+    color: rgb(0 0 0 / 77%);
     font-family: "Roboto Mono", monospace;
-    font-weight: 300;
+    font-weight: 500;
 }
 
-.contactElement p>a:hover {
-    color: rgb(30, 255, 0);
-}
+/* .contactElement p>a:hover {
 
-.contactElement p:hover {
-    box-shadow: 0 0 10px 3px rgba(0, 179, 255, 0.705);
-    border: 8px solid transparent;
+} */
+
+.contactElement p:hover { 
     width: fit-content;
     height: fit-content;
 }

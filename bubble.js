@@ -36,7 +36,7 @@ async function initAudio() {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   }
   if (!audioBuffer) {
-    const response = await fetch('sound/audio3.MP3');
+    const response = await fetch('assets/sound/audio6.MP3');
     const arrayBuffer = await response.arrayBuffer();
     audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
   }
@@ -55,14 +55,14 @@ function playBubbleSound(size) {
   const inverted = 1 - normalizedSize;
 
   // Pitch: small bubble = higher pitch, big = lower pitch
-  const minPlayback = 0.1;
-  const maxPlayback = 1.2;
+  const minPlayback = 0.2;
+  const maxPlayback = 1.7;
   const playbackRate = inverted * (maxPlayback - minPlayback) + minPlayback;
   source.playbackRate.value = playbackRate;
 
   // Volume: small bubble = louder, big bubble = quieter
   const minVolume = 0.1;
-  const maxVolume = 0.8;
+  const maxVolume = 0.6;
   const volume = inverted * (maxVolume - minVolume) + minVolume;
 
   const gain = audioCtx.createGain();

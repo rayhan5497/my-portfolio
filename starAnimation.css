@@ -1,122 +1,35 @@
 .starContainer {
-  filter: blur(500px);
   position: absolute;
-  overflow: hidden;
   height: 100vh;
   width: 100vw;
+  pointer-events: none;
 }
+
+body {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+html {
+  overflow-x: hidden;
+}
+
+
 
 .star {
   background-color: rgb(0, 149, 149);
-  height: 0px;
-  width: 0px;
+  height: 500px;
+  width: 500px;
   position: absolute;
   border-radius: 50%;
-  pointer-events: none;
-  animation: star 5s infinite ease-in-out;
+  filter: blur(300px); 
+  will-change: filter; 
+  transition: 1s ease;
 }
 
-/* .animate-star {
-  animation: star 5s infinite ease-in-out;
-} */
-
-
-@keyframes star {
-  0% {
-    box-shadow:
-      0 0 1px rgba(0, 150, 150, 0.9),
-      0 0 2px rgba(0, 150, 150, 0.9),
-      0 0 3px rgba(0, 150, 150, 0.9),
-      0 0 4px rgba(0, 150, 150, 0.9),
-      0 0 5px rgba(0, 150, 150, 0.9),
-      0 0 6px rgba(0, 150, 150, 0.9),
-      0 0 7px rgba(0, 150, 150, 0.9),
-      0 0 8px rgba(0, 150, 150, 0.9),
-      0 0 9px rgba(0, 150, 150, 0.9),
-      0 0 10px rgba(0, 150, 150, 0.9),
-      0 0 15px rgba(0, 150, 150, 0.9),
-      0 0 20px rgba(0, 150, 150, 0.9),
-      0 0 25px rgba(0, 150, 150, 0.9),
-      0 0 30px rgba(0, 150, 150, 0.9),
-      0 0 35px rgba(0, 150, 150, 0.9),
-      0 0 40px rgba(0, 150, 150, 0.9),
-      0 0 50px rgba(0, 150, 150, 0.9),
-      0 0 60px rgba(0, 150, 150, 0.9),
-      0 0 70px rgba(0, 150, 150, 0.9),
-      0 0 80px rgba(0, 150, 150, 0.9),
-      0 0 90px rgba(0, 150, 150, 0.9),
-      0 0 100px rgba(0, 150, 150, 0.9),
-      0 0 120px rgba(0, 150, 150, 0.9),
-      0 0 140px rgba(0, 150, 150, 0.9),
-      0 0 160px rgba(0, 150, 150, 0.9),
-      0 0 180px rgba(0, 150, 150, 0.9),
-      0 0 200px rgba(0, 150, 150, 0.9),
-      0 0 220px rgba(0, 150, 150, 0.9),
-      0 0 240px rgba(0, 150, 150, 0.9),
-      0 0 260px rgba(0, 150, 150, 0.9),
-      0 0 280px rgba(0, 150, 150, 0.9),
-      0 0 300px rgba(0, 150, 150, 0.9),
-      0 0 320px rgba(0, 150, 150, 0.9),
-      0 0 340px rgba(0, 150, 150, 0.9),
-      0 0 360px rgba(0, 150, 150, 0.9),
-      0 0 400px rgba(0, 150, 150, 0.9),
-      0 0 450px rgba(0, 150, 150, 0.9),
-      0 0 500px rgba(0, 150, 150, 0.9);
-
-    height: 300px;
-    width: 300px;
-    opacity: 1;
-  }
-
-  /* 50% {
-    height: 1px;
-    width: 1px;
-    opacity: 0;
-  }  */
-
-  100% {
-    box-shadow:
-      0 0 1px rgba(0, 150, 150, 0.9),
-      0 0 2px rgba(0, 150, 150, 0.9),
-      0 0 3px rgba(0, 150, 150, 0.9),
-      0 0 4px rgba(0, 150, 150, 0.9),
-      0 0 5px rgba(0, 150, 150, 0.9),
-      0 0 6px rgba(0, 150, 150, 0.9),
-      0 0 7px rgba(0, 150, 150, 0.9),
-      0 0 8px rgba(0, 150, 150, 0.9),
-      0 0 9px rgba(0, 150, 150, 0.9),
-      0 0 10px rgba(0, 150, 150, 0.9),
-      0 0 15px rgba(0, 150, 150, 0.9),
-      0 0 20px rgba(0, 150, 150, 0.9),
-      0 0 25px rgba(0, 150, 150, 0.9),
-      0 0 30px rgba(0, 150, 150, 0.9),
-      0 0 35px rgba(0, 150, 150, 0.9),
-      0 0 40px rgba(0, 150, 150, 0.9),
-      0 0 50px rgba(0, 150, 150, 0.9),
-      0 0 60px rgba(0, 150, 150, 0.9),
-      0 0 70px rgba(0, 150, 150, 0.9),
-      0 0 80px rgba(0, 150, 150, 0.9),
-      0 0 90px rgba(0, 150, 150, 0.9),
-      0 0 100px rgba(0, 150, 150, 0.9),
-      0 0 120px rgba(0, 150, 150, 0.9),
-      0 0 140px rgba(0, 150, 150, 0.9),
-      0 0 160px rgba(0, 150, 150, 0.9),
-      0 0 180px rgba(0, 150, 150, 0.9),
-      0 0 200px rgba(0, 150, 150, 0.9),
-      0 0 220px rgba(0, 150, 150, 0.9),
-      0 0 240px rgba(0, 150, 150, 0.9),
-      0 0 260px rgba(0, 150, 150, 0.9),
-      0 0 280px rgba(0, 150, 150, 0.9),
-      0 0 300px rgba(0, 150, 150, 0.9),
-      0 0 320px rgba(0, 150, 150, 0.9),
-      0 0 340px rgba(0, 150, 150, 0.9),
-      0 0 360px rgba(0, 150, 150, 0.9),
-      0 0 400px rgba(0, 150, 150, 0.9),
-      0 0 450px rgba(0, 150, 150, 0.9),
-      0 0 500px rgba(0, 150, 150, 0.9);
-
-    height: 300px;
-    width: 300px;
-    opacity: 1;
-  }
+@supports (-moz-appearance: none) {
+.star {
+  filter: blur(500px); 
+  opacity: 0.5;
+  box-shadow: 0 0 500px rgb(0, 149, 149);
+}
 }

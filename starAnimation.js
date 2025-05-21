@@ -1,6 +1,8 @@
 const starContainer = document.querySelectorAll('.starContainer');
+// const lastStarContainer = starContainer[starContainer.length - 1];
+// if (lastStarContainer) lastStarContainer.style.height = '100vh';
+
 let initialStar = document.querySelector('.star');
-// const clonedStar = initialStar.cloneNode(true);
 console.log(initialStar);
 const stars = [];
 
@@ -16,6 +18,13 @@ starContainer.forEach((container, index) => {
     container.appendChild(stars[starIndex]);
   }
 });
+
+// const domStars = starContainer.querySelectorAll('.star');
+// domStars.forEach(star => {
+//   for (let i = 0; i < 4; i++) {
+//     star.style.transform = 'translateY(100vh)';
+//   }
+// })
 
 const orbits = [];
 

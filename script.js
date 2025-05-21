@@ -35,18 +35,16 @@ document.body.addEventListener('click', function (event) {
   }
 
   // Reset the animation
-
   loadingDot1.style.animation = '';
   loadingDot2.style.animation = '';
 
-  loadingContainer.style.left = `${event.clientX - 25}px`; // Center the container
-  loadingContainer.style.top = `${event.clientY - 25}px`; // Center the container
+  loadingContainer.style.left = `${event.clientX - 25}px`;
+  loadingContainer.style.top = `${event.clientY - 25}px`;
   loadingContainer.style.display = 'block';
 
-  // Set a new timeout to hide the animation after 6 seconds
   timeoutId = setTimeout(() => {
-    loadingContainer.style.display = 'none'; // Hide the animation after 6 seconds
-  }, 1000); // Match the animation duration
+    loadingContainer.style.display = 'none';
+  }, 1000);
 });
 
 // FOR TYPE WRITER BOTTOM LINE
@@ -55,27 +53,25 @@ document.addEventListener('DOMContentLoaded', function () {
   const bottomLine = document.querySelector('.bottomLine');
   let index = 0;
   let repeatCount = 0;
-  const repeatLimit = 12; // Number of repetitions for the last three letters
+  const repeatLimit = 12;
   const lastThreeLetters = text.slice(-4);
   let blinkCount = 0;
-  const blinkLimit = 7; // Number of blinks for the first letter
+  const blinkLimit = 7;
 
   function typeWriter() {
     if (blinkCount < blinkLimit * 2) {
-      // Blinking phase for the first letter
       if (blinkCount % 2 === 0) {
         bottomLine.textContent = text.charAt(0);
       } else {
         bottomLine.textContent = '';
       }
       blinkCount++;
-      setTimeout(typeWriter, 400); // Adjust the speed of blinking here
+      setTimeout(typeWriter, 400);
     } else if (blinkCount === blinkLimit * 2) {
-      // Remove the first letter after blinking phase
       bottomLine.textContent = '';
-      index++; // Skip the first letter
+      index++;
       blinkCount++;
-      setTimeout(typeWriter, 0); // Small delay before starting the main text animation
+      setTimeout(typeWriter, 0);
     } else if (index < text.length - 4) {
       // Main text animation
       if (text.charAt(index) === ' ') {
@@ -93,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
         bottomLine.appendChild(charSpan);
         setTimeout(() => charSpan.classList.add('visible'), 10);
         index++;
-        setTimeout(typeWriter, 100); // Adjust the speed here for the main text
+        setTimeout(typeWriter, 100);
       }
     } else if (index < text.length) {
       // Last three letters animation
@@ -103,13 +99,13 @@ document.addEventListener('DOMContentLoaded', function () {
       bottomLine.appendChild(charSpan);
       setTimeout(() => charSpan.classList.add('visible'), 10);
       index++;
-      setTimeout(typeWriter, 500); // Adjust the speed here for the last three letters
+      setTimeout(typeWriter, 500);
     } else if (repeatCount < repeatLimit) {
       // Repeating the last three letters
       bottomLine.textContent =
         text.slice(1, -4) + lastThreeLetters.slice(0, (repeatCount % 4) + 1);
       repeatCount++;
-      setTimeout(typeWriter, 500); // Adjust the speed for the last three letters animation
+      setTimeout(typeWriter, 500);
     } else {
       // Restarting the animation
       setTimeout(() => {
@@ -118,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
         repeatCount = 0;
         blinkCount = 0;
         typeWriter();
-      }, 5000); // Adjust the delay before restarting the animation
+      }, 5000);
     }
   }
   typeWriter();
@@ -132,7 +128,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let elements = [professional, upToDateDesign, responsiveAndSecure];
   let currentIndex = 0;
+  let nextIndex = 0;
+  let prevIndex = 0;
   let isScrolling = false;
+
+  const starContainer = document.querySelectorAll('.starContainer');
 
   function updatePositions() {
     elements.forEach((el, index) => {
@@ -142,13 +142,31 @@ document.addEventListener('DOMContentLoaded', function () {
       el.style.fontSize = index === currentIndex ? '' : '0vw';
     });
 
-    const nextIndex = (currentIndex + 1) % elements.length;
-    const prevIndex = (currentIndex - 1 + elements.length) % elements.length;
+    nextIndex = (currentIndex + 1) % elements.length;
+    prevIndex = (currentIndex - 1 + elements.length) % elements.length;
 
     elements[nextIndex].style.right = 'auto';
     elements[nextIndex].style.left = 'auto';
     elements[prevIndex].style.left = 'auto';
     elements[prevIndex].style.right = 'auto';
+  }
+
+  const lastContainer = starContainer[starContainer.length - 1];
+  const stars = lastContainer.querySelectorAll('.star');
+  function starColorChange() {
+    if (isScrolling) {
+      elements.forEach((el, index) => {
+        stars.forEach((star) => {
+          if (index === nextIndex) {
+            star.style.backgroundColor = 'red';
+          } else if (index === prevIndex) {
+            star.style.backgroundColor = 'green';
+          } else if (index === currentIndex) {
+            star.style.backgroundColor = 'purple';
+          }
+        });
+      });
+    }
   }
 
   function onScroll(event) {
@@ -163,10 +181,11 @@ document.addEventListener('DOMContentLoaded', function () {
       currentIndex = (currentIndex - 1 + elements.length) % elements.length;
     }
     updatePositions();
+    starColorChange();
 
     setTimeout(() => {
       isScrolling = false;
-    }, 500); // Adjust the delay as needed
+    }, 500);
   }
 
   function preventScroll(event) {
@@ -186,22 +205,23 @@ document.addEventListener('DOMContentLoaded', function () {
   updatePositions();
 
   // FOR PAGE UP AND DOWN SCROLLING
-
   function scrollPage(direction) {
+    updatePositions();
     window.scrollBy({
       top: direction === 'down' ? window.innerHeight : -window.innerHeight,
       behavior: 'smooth',
     });
+    starColorChange();
   }
 
   function handleScroll(event, direction) {
-    event.preventDefault(); // Prevent the default scroll behavior
+    event.preventDefault();
     if (!isScrolling) {
       isScrolling = true;
       scrollPage(direction);
       setTimeout(() => {
         isScrolling = false;
-      }, 500); // Adjust the timeout duration as needed
+      }, 500);
     }
   }
 
