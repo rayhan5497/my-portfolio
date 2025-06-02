@@ -1,0 +1,35 @@
+.starContainer {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  pointer-events: none;
+}
+
+body {
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+html {
+  overflow-x: hidden;
+}
+
+
+
+.star {
+  background-color: rgb(0, 149, 149);
+  height: 500px;
+  width: 500px;
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(300px); 
+  will-change: filter; 
+  transition: 1s ease;
+}
+
+@supports (-moz-appearance: none) {
+.star {
+  filter: blur(500px); 
+  opacity: 0.5;
+  box-shadow: 0 0 500px rgb(0, 149, 149);
+}
+}
