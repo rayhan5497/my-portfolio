@@ -1,0 +1,50 @@
+* {
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+}
+
+.dodum-font {
+    font-family: "Gowun Dodum", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.poppins-font {
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.protest-font * {
+    font-family: "Italiana", sans-serif !important;
+}
+
+
+.margin {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+html {
+    width: 100%;
+}
+
+body {
+    color: aliceblue;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #000000, #020202, #001216, #003035);
+    background-size: 150%;
+    position: relative;
+    animation: color 20s ease-in-out infinite;
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.1s ease-in;
+}
+
+.fade-in.visible {
+    opacity: 1;
+}

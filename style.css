@@ -1,46 +1,3 @@
-* {
-    font-family: "Poppins", sans-serif;
-    text-decoration: none;
-}
-
-.dodum-font {
-    font-family: "Gowun Dodum", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.poppins-font {
-    font-family: "Poppins", sans-serif !important;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.protest-font * {
-    font-family: "Italiana", sans-serif !important;
-}
-
-
-.margin {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-}
-
-html {
-    width: 100%;
-}
-
-body {
-    color: aliceblue;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, #000000, #020202, #001216, #003035);
-    background-size: 150%;
-    position: relative;
-    animation: color 20s ease-in-out infinite;
-}
-
-
 .headerContainer {
     height: 100%;
     width: 100%;
@@ -50,31 +7,6 @@ body {
 .mainAndFooterContainer {
     height: 100%;
     width: 100%;
-}
-
-
-a {
-    color: aliceblue;
-    transition: 300ms ease-in-out;
-}
-
-a:hover {
-    color: rgb(30, 255, 0);
-}
-
-
-@keyframes color {
-    0% {
-        background-position: 0 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0 50%;
-    }
 }
 
 header {
@@ -129,6 +61,33 @@ header {
     color: rgb(30, 255, 0);
 }
 
+.navManu img {
+    width: 25px;
+    filter: invert();
+    pointer-events: none;
+}
+
+.navManu li::after {
+    content: '';
+    transform: translateY(-25px);
+    transition: 400ms ease;
+    opacity: 0;
+    font-size: 0;
+    pointer-events: none;
+}
+
+.navManu li:hover::after {
+    content: attr(data-name);
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    display: flex;
+    transform: translateY(13px) translateX(-5px);
+    opacity: 0.8;
+    text-transform: capitalize;
+    font-size: 13px;
+}
+
 .headLineImgPair {
     display: flex;
     position: relative;
@@ -179,11 +138,6 @@ header {
     word-spacing: 5px;
     opacity: 1;
     text-align: left;
-}
-
-
-p strong {
-    font-weight: 500;
 }
 
 
@@ -255,6 +209,9 @@ p strong {
     filter: drop-shadow(100px 20px 34px black);
 }
 
+.imgAndLottie picture{
+    display: contents;
+}
 
 .imgAndLottie img {
     width: 130%;
@@ -301,15 +258,6 @@ p strong {
 }
 
 
-.fade-in {
-    opacity: 0;
-    transition: opacity 0.1s ease-in;
-}
-
-.fade-in.visible {
-    opacity: 1;
-}
-
 .mainBoxContainer {
     height: 100vh;
     height: 100%;
@@ -324,6 +272,29 @@ p strong {
     /* color: lightcyan; */
     transition: 1s ease;
     text-align: center;
+}
+
+.mainBoxContainer h2 {
+    font-size: 50px;
+    opacity: 1;
+    font-weight: 200;
+    /* margin: 0 auto 35px; */
+}
+
+.mainBoxContainer h3 {
+    font-size: 18px;
+    opacity: 1;
+    font-weight: 400;
+}
+
+.mainBoxContainer p {
+    opacity: 0.7;
+    font-weight: 400;
+}
+
+.mainBoxContainer span {
+    opacity: 0.7;
+    font-weight: 400;
 }
 
 .mainBox {
@@ -374,12 +345,6 @@ p strong {
     transition: inherit;
 }
 
-/* .professional,
-.upToDateDesign,
-.responsiveAndSecure {
-
-} */
-
 footer {
     z-index: 1;
     position: absolute;
@@ -398,8 +363,6 @@ footer {
 footer p {
     cursor: pointer;
 }
-
-
 
 .reachUs {
     border-radius: 15px;
@@ -480,52 +443,26 @@ footer p {
 }
 
 
-/* @keyframes boxShadow {
-
-    0% {
-        text-shadow:
-            0px 0px 10px rgb(255, 255, 255),
-            0px 0px 20px rgb(255, 255, 255),
-            0px 0px 30px rgb(255, 255, 255),
-            0px 0px 70px rgb(255, 255, 255);
-    }
-
-    50% {
-        text-shadow:
-            0px 0px 0px rgba(255, 255, 255, 0),
-            0px 0px 0px rgba(255, 255, 255, 0),
-            0px 0px 0px rgba(255, 255, 255, 0),
-            0px 0px 0px rgba(255, 255, 255, 0);
-
-        opacity: 0;
-    }
-
-    100% {
-        text-shadow:
-            0px 0px 10px rgb(255, 255, 255),
-            0px 0px 20px rgb(255, 255, 255),
-            0px 0px 30px rgb(255, 255, 255),
-            0px 0px 70px rgb(255, 255, 255);
-    }
-} */
-
-#service {
-    width: 100vw;
-    padding: 0;
-    z-index: 9999;
-    position: relative;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: 100%;
+/*========MAINBOX ITEMS=======*/
+#projects,
+#tools,
+#service,
+#about,
+#connect {
+    position: absolute;
+    justify-self: anchor-center;
 }
 
-#service h1 {
-    top: 0px;
-    position: fixed;
+#about h2,
+#connect h2 {
+    font-size: 20px;
+    opacity: 0.7;
+    font-weight: 400;
+    margin: 0 auto 35px;
+    text-align: center;
 }
 
+/*=======PROJECTS=======*/
 #projects {
     width: 100vw;
     padding: 0;
@@ -594,6 +531,60 @@ footer p {
     margin-left: 0;
 }
 
+.card button img {
+    width: 20px;
+}
+
+.card button:hover {
+    background-color: #0000005b;
+}
+
+.card button::after {
+    content: '';
+    transform: translateY(-25px);
+    transition: 400ms ease;
+    opacity: 0;
+    font-size: 0;
+    pointer-events: none;
+    width: max-content;
+    /*invert the width that is already inverted by .card button styles*/
+}
+
+.card button:hover::after {
+    content: attr(data-name);
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    position: fixed;
+    display: flex;
+    transform: translateY(15px) translateX(-5px);
+    opacity: 0.8;
+    text-transform: capitalize;
+    font-size: 13px;
+    filter: invert();
+}
+
+
+/*=======SERVICE=======*/
+#service {
+    width: 100vw;
+    padding: 0;
+    z-index: 9999;
+    position: relative;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    position: absolute;
+    display: none;
+}
+
+#service h1 {
+    top: 0px;
+    position: fixed;
+}
+
+/*=======TOOLS=======*/
 #tools {
     width: 100vw;
     padding: 0;
@@ -627,7 +618,6 @@ footer p {
     cursor: pointer;
 }
 
-
 .toolsContainer {
     padding: 10px;
     justify-items: center;
@@ -657,12 +647,20 @@ footer p {
     background-color: #00000000;
 }
 
+.toolsContainer img {
+    width: 40px;
+    padding: 10px;
+    background-color: #ffffff1c;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+/*=======ABOUT=======*/
 #about {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* display: none; */
     width: 100vw;
     position: absolute;
     display: none;
@@ -720,13 +718,12 @@ footer p {
     padding-right: 28px;
 }
 
-/*CONNECT*/
+/*======CONNECT=======*/
 #connect {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* display: none; */
     width: 100vw;
     position: absolute;
     display: none;
@@ -814,6 +811,7 @@ textarea:focus {
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    color: white;
 }
 
 .connectLinks a:hover {
@@ -831,115 +829,6 @@ textarea:focus {
 
 .nameContainer p {
     margin: 0;
-}
-
-#projects,
-#tools,
-#service,
-#about,
-#connect {
-    position: absolute;
-    justify-self: anchor-center;
-}
-
-.mainBoxContainer h2 {
-    font-size: 50px;
-    opacity: 1;
-    font-weight: 200;
-    /* margin: 0 auto 35px; */
-}
-
-.mainBoxContainer h3 {
-    font-size: 18px;
-    opacity: 1;
-    font-weight: 400;
-}
-
-.mainBoxContainer p {
-    opacity: 0.7;
-    font-weight: 400;
-}
-
-.mainBoxContainer span {
-    opacity: 0.7;
-    font-weight: 400;
-}
-
-.navManu img {
-    width: 25px;
-    filter: invert();
-    pointer-events: none;
-}
-
-.navManu li::after {
-    content: '';
-    transform: translateY(-25px);
-    transition: 400ms ease;
-    opacity: 0;
-    font-size: 0;
-    pointer-events: none;
-}
-
-.navManu li:hover::after {
-    content: attr(data-name);
-    background-color: transparent;
-    color: rgb(255, 255, 255);
-    position: absolute;
-    display: flex;
-    transform: translateY(13px) translateX(-5px);
-    opacity: 0.8;
-    text-transform: capitalize;
-    font-size: 13px;
-}
-
-
-.card button img {
-    width: 20px;
-}
-
-.card button:hover {
-    background-color: #0000005b;
-}
-
-.card button::after {
-    content: '';
-    transform: translateY(-25px);
-    transition: 400ms ease;
-    opacity: 0;
-    font-size: 0;
-    pointer-events: none;
-    width: max-content;
-    /*invert the width that is already inverted by .card button styles*/
-}
-
-.card button:hover::after {
-    content: attr(data-name);
-    background-color: transparent;
-    color: rgb(255, 255, 255);
-    position: fixed;
-    display: flex;
-    transform: translateY(15px) translateX(-5px);
-    opacity: 0.8;
-    text-transform: capitalize;
-    font-size: 13px;
-    filter: invert();
-}
-
-.toolsContainer img {
-    width: 40px;
-    padding: 10px;
-    background-color: #ffffff1c;
-    border-radius: 10px;
-    margin: 10px;
-}
-
-#about h2,
-#connect h2 {
-    font-size: 20px;
-    opacity: 0.7;
-    font-weight: 400;
-    margin: 0 auto 35px;
-    text-align: center;
 }
 
 .thank-message {
