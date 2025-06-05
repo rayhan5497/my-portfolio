@@ -495,6 +495,7 @@
   /*=====ABOUT SECTION=====*/
   .aboutDetailsContainer {
     flex-direction: column;
+    width: 90vw;
   }
 
   .aboutDetails {
@@ -699,6 +700,10 @@
 
   #about {
     top: auto;
+  }
+
+  .aboutDetails p {
+    font-size: 15px;
   }
 
   /*========CONNECT SECTION========*/

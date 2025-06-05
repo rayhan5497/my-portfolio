@@ -343,19 +343,22 @@
                                 <h3>Send me a message</h3>
                                 <p>Fill out the form below and I'll get back to you as soon as possible.</p>
 
-                                <label for="name">Name</label>
-                                <input type="text" name="name" id="name" required>
-
-                                <label for="email">Email</label>
-                                <input type="email" name="email" id="email" required>
-
-                                <label for="subject">Subject</label>
-                                <input type="text" name="subject" id="subject">
-
-                                <label for="message">Message</label>
-                                <textarea name="message" id="message" required></textarea>
-
+                                <div class="formContainer">
+                                    <div class="name-and-subject">
+                                        <label for="name">Name</label>
+                                        <input type="text" name="name" id="name" required>
+                                        <label for="email">Email</label>
+                                        <input type="email" name="email" id="email" required>
+                                        <label for="subject">Subject</label>
+                                        <input type="text" name="subject" id="subject">
+                                    </div>
+                                    <div class="textarea">
+                                        <label for="message">Message</label>
+                                        <textarea name="message" id="message" required></textarea>
+                                    </div>
+                                </div>
                                 <button type="submit">Send Message</button>
+
                             </form>
                             <div class="connectLinks">
                                 <h3>Connect with me</h3>

@@ -126,29 +126,28 @@ document.addEventListener('DOMContentLoaded', function () {
   let inServiceMode = false;
   const serviceSlides = [professional, upToDateDesign, responsiveAndSecure];
 
-
   // ======= STYLE HELPERS =======
-function applyTransition(element, enterFrom = 'bottom') {
-  const footer = document.querySelector('footer');
-  if (element.id === 'connect') {
-    footer.style.display = 'none';
-  } else if (footer.style.display === 'none') {
-    footer.style.display = 'flex';
-  }
-  element.style.display = 'flex';
-  element.style.transition = 'none';
-  element.style.opacity = '0';
-  element.style.transform = enterFrom === 'bottom' ? 'translateY(100px)' : 'translateY(-100px)';
+  function applyTransition(element, enterFrom = 'bottom') {
+    const footer = document.querySelector('footer');
+    if (element.id === 'connect') {
+      footer.style.display = 'none';
+    } else if (footer.style.display === 'none') {
+      footer.style.display = 'flex';
+    }
+    element.style.display = 'flex';
+    element.style.transition = 'none';
+    element.style.opacity = '0';
+    element.style.transform =
+      enterFrom === 'bottom' ? 'translateY(100px)' : 'translateY(-100px)';
 
-  requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      element.style.opacity = '1';
-      element.style.transform = 'translateY(0px)';
+      requestAnimationFrame(() => {
+        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        element.style.opacity = '1';
+        element.style.transform = 'translateY(0px)';
+      });
     });
-  });
-}
-
+  }
 
   function hideWithTransition(element, exitTo = 'top') {
     element.style.transition = 'opacity 0.3s ease, transform 0.5s ease';
@@ -185,7 +184,8 @@ function applyTransition(element, enterFrom = 'bottom') {
       slide.style.opacity = i === index ? '1' : '0';
       slide.style.zIndex = i === index ? '1' : '0';
       slide.style.fontSize = i === index ? '' : '0vw';
-      slide.style.transform = i === index ? 'translateY(0px)' : 'translateY(0px)';
+      slide.style.transform =
+        i === index ? 'translateY(0px)' : 'translateY(0px)';
       h2.style.fontSize = i === index ? '100%' : '0';
     });
     serviceSlideIndex = index;
@@ -256,18 +256,26 @@ function applyTransition(element, enterFrom = 'bottom') {
   }
 
   // ======= EVENT BINDING =======
+  // ====== FOR WHEEL ======
   header.addEventListener('wheel', (e) => {
+    if (e.ctrlKey) return;
+    e.preventDefault();
     if (e.deltaY > 0 && !isScrolling) {
       isScrolling = true;
       window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
       setTimeout(() => (isScrolling = false), 500);
       isSecondPage = true;
+    } else if (e.deltaY < 0) {
+      handleScroll('up');
+      isSecondPage = false;
     }
   });
 
   mainAndFooter.addEventListener(
     'wheel',
     (e) => {
+      if (e.ctrlKey) return;
+      e.preventDefault();
       if (e.deltaY > 0) {
         handleScroll('down');
       } else {
@@ -278,10 +286,43 @@ function applyTransition(element, enterFrom = 'bottom') {
     { passive: false }
   );
 
+  // ======= FOR TOUCH =======
+  let touchStartY = 0;
+  header.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+  });
+  header.addEventListener('touchmove', (e) => {
+    const touchMoveY = e.touches[0].clientY;
+    if (touchMoveY < touchStartY && !isScrolling) {
+      isScrolling = true;
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+      setTimeout(() => (isScrolling = false), 500);
+      isSecondPage = true;
+    }
+  });
+  mainAndFooter.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+  });
+  mainAndFooter.addEventListener(
+    'touchmove',
+    (e) => {
+      const touchMoveY = e.touches[0].clientY;
+      if (touchMoveY < touchStartY) {
+        handleScroll('down');
+      } else {
+        handleScroll('up');
+        isSecondPage = false;
+      }
+    },
+    { passive: false }
+  );
+
   // ====== THIS ENABLES SCROLLING ON manuAndNav WHICH IS A FIXED ITEM OF FIRST PAGE AND OVERLAPPED BY mainAndFooter OF THE SECOND PAGE IN THE SECOND PAGE ========
+  // ===== FOR WHEEL ======
   manuAndNav.addEventListener(
     'wheel',
     (e) => {
+      if (e.ctrlKey) return;
       if (e.deltaY < 0) {
         handleScroll('up');
         isSecondPage = false;
@@ -291,6 +332,32 @@ function applyTransition(element, enterFrom = 'bottom') {
     },
     { passive: false }
   );
+
+  // ======= FOR TOUCH =======
+  manuAndNav.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+  });
+  manuAndNav.addEventListener(
+    'touchmove',
+    (e) => {
+      const touchMoveY = e.touches[0].clientY;
+      if (touchMoveY < touchStartY && isSecondPage) {
+        handleScroll('down');
+      } else if (isSecondPage) {
+        handleScroll('up');
+        isSecondPage = false;
+      }
+    },
+    { passive: false }
+  );
+
+  // ====== RESET TOUCH COORDS ========
+  manuAndNav.addEventListener('touchend', () => {
+    touchStartY = 0;
+  });
+  manuAndNav.addEventListener('touchcancel', () => {
+    touchStartY = 0;
+  });
 
   showSection(currentSectionIndex);
 
@@ -322,7 +389,7 @@ function applyTransition(element, enterFrom = 'bottom') {
 
 //header icons move
 const icons = document.querySelectorAll('.headerIcons');
-let directionY = -10; 
+let directionY = -10;
 let sharedInterval;
 let iconIntervals = [];
 
@@ -334,7 +401,7 @@ function applyMovement(icon) {
 // Start moving all icons with shared vertical direction
 function startAllMoving() {
   icons.forEach((icon, index) => {
-    let delay = index * 700; 
+    let delay = index * 700;
     const move = () => applyMovement(icon);
     const id = setInterval(move, 700 + delay);
     iconIntervals.push({ icon, id });
@@ -350,7 +417,7 @@ function stopIconMovement(icon) {
   const index = iconIntervals.findIndex((obj) => obj.icon === icon);
   if (index !== -1) {
     clearInterval(iconIntervals[index].id);
-    iconIntervals.splice(index, 1); 
+    iconIntervals.splice(index, 1);
   }
 
   icon.style.transition = 'none';
@@ -412,7 +479,6 @@ function sortItems(event) {
 }
 
 toolsNav.addEventListener('click', (e) => sortItems(e));
-
 
 //====CONNECT=====
 const form = document.querySelector('form');
